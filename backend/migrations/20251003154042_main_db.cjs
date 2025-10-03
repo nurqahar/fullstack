@@ -65,6 +65,14 @@ exports.up = async function (knex) {
     table.string("kehadiran", "100");
     table.string("keterangan", "255");
   });
+
+  await knex.schema.createTable("users", (table) => {
+    table.increments("id");
+    table.string("email", "255");
+    table.string("username", "255");
+    table.string("password", "255");
+    table.timestamp("createdAt").defaultTo(knex.raw("CURRENT_TIMESTAMP"));
+  });
 };
 
 /**
@@ -79,4 +87,5 @@ exports.down = async function (knex) {
   await knex.schema.dropTable("kelas");
   await knex.schema.dropTable("siswa");
   await knex.schema.dropTable("guru");
+  await knex.schema.dropTable("users");
 };
