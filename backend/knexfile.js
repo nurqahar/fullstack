@@ -1,13 +1,16 @@
-import "dotenv/config"
+import "dotenv/config";
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
-module.exports = {
+export default {
   development: {
     client: "postgresql",
     connection: {
-      connectionString: :
+      connectionString: process.env.DATABASE_URL,
+    },
+    migrations: {
+      tableName: "knex_migrations",
     },
   },
 
@@ -24,6 +27,7 @@ module.exports = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations/staging",
     },
   },
 
@@ -40,6 +44,7 @@ module.exports = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations/production",
     },
   },
 };
