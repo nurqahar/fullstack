@@ -4,4 +4,7 @@ export const patternProdi = /^(TOI|TP|TSM|TJKT) [1-9]$/;
 export const patternKehadiran = /^(sakit|alpa|izin)$/;
 export const patternStatusSiswa =
   /^(keluar|lulus|tidak lulus|naik kelas|tidak naik kelas)$/;
+export const usernamePattern = /^[A-Za-z]+$/;
 export const patternJenisKelamin = /^(L|P)$/;
+export const passwordPattern =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
