@@ -1,7 +1,8 @@
 import Joi from "joi";
-import { patternPeriodeTahun } from "./regexPatternSchema.js";
+import { patternPeriodeTahun } from "./patternRegexSchema.js";
 
 const catatanMengajarSchema = Joi.object({
+  materi: Joi.string().min(3).required(),
   tanggal_mengajar: Joi.date().iso().required(),
   jam_ke: Joi.number().integer().greater(0).max(15).required(),
   jumlah_jp: Joi.number().integer().greater(0).max(15).required(),

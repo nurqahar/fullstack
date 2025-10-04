@@ -3,7 +3,7 @@ export const patternTingkat = /^(X|XI|XII|XIII)$/;
 export const patternProdi = /^(TOI|TP|TSM|TJKT) [1-9]$/;
 export const patternKehadiran = /^(sakit|alpa|izin)$/;
 export const patternStatusSiswa =
-  /^(keluar|lulus|tidak lulus|naik kelas|tidak naik kelas)$/;
+  /^(aktif|keluar|lulus|tidak lulus|naik kelas|tidak naik kelas)$/;
 export const usernamePattern = /^[A-Za-z]+$/;
 export const patternJenisKelamin = /^(L|P)$/;
 export const passwordPattern =

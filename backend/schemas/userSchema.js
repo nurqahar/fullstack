@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { passwordPattern, usernamePattern } from "./regexPatternSchema";
+import { usernamePattern, passwordPattern } from "./patternRegexSchema";
 
 const userSchema = Joi.object({
   email: Joi.string().email().required(),
