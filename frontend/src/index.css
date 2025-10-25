@@ -4,11 +4,6 @@
   --primary-txt-color-custom: rgb(238, 238, 238);
   --secondary-bg-color-custom: rgb(79, 111, 82, 0.8);
   --secondary-txt-strong-color-custom: rgb(115, 144, 114);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
