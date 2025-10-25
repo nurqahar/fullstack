@@ -1,22 +1,26 @@
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function Dashboard() {
   return (
-    <Container fluid="md" className="bg-body-tertiary " data-bs-theme="dark">
-      <Navbar expand="md">
-        <Container>
-          <Navbar.Brand>Teaching Notes</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Button variant="danger">Logout</Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <Container className="mt-5 justify-content-center" data-bs-theme="dark">
+      <Row className="text-center ">
+        <Col>
+          <h1>Choose Menu To Start</h1>
+        </Col>
+      </Row>
+      <Row className="mt-5 ">
+        <Col>
+          <ul style={{ listStyleType: "None" }}>
+            <li>Students</li>
+            <li>Classes</li>
+            <li>Subjects</li>
+            <li>Teachers</li>
+            <li>Students History</li>
+          </ul>
+        </Col>
+      </Row>
     </Container>
   );
 }
