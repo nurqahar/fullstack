@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Container from "react-bootstrap/Container";
 import "./App.css";
 import Login from "./pages/Login.jsx";
-import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Students from "./pages/Students.jsx";
@@ -14,14 +13,10 @@ import Subjects from "./pages/Subjects.jsx";
 export default function App() {
   return (
     <BrowserRouter>
-      <Container>
-        <Routes>
-          <Route index element={<Login />} />
-        </Routes>
-      </Container>
       <Container fluid className="m-0 p-0">
         <NavBar />
         <Routes>
+          <Route index element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/students" element={<Students />} />
           <Route path="/classes" element={<Classes />} />
