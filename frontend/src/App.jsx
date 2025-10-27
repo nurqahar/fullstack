@@ -16,13 +16,12 @@ export default function App() {
     <BrowserRouter>
       <Container>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route index element={<Login />} />
         </Routes>
       </Container>
       <Container fluid className="m-0 p-0">
         <NavBar />
         <Routes>
-          <Route index element={<Homepage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/students" element={<Students />} />
           <Route path="/classes" element={<Classes />} />
