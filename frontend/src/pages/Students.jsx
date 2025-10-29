@@ -23,13 +23,28 @@ function reducer(state, action) {
         upload: !state.upload,
         error: null,
       };
-    case "SUBMIT":
+    case "STATUS ADD STUDENT":
       return {
         ...state,
         add: false,
         upload: false,
-        submit: !state.submit,
+        statusAddStudent: !state.statusAddStudent,
+        statusUpload: state.statusUpload,
         error: null,
+      };
+    case "STATUS UPLOAD":
+      return {
+        ...state,
+        add: false,
+        upload: false,
+        statusAddStudent: state.statusAddStudent,
+        statusUpload: !state.statusUpload,
+        error: null,
+      };
+    case "SET FILE":
+      return {
+        ...state,
+        file: action.payload,
       };
 
     default:
@@ -41,34 +56,59 @@ export default function Students() {
   const [state, dispatch] = useReducer(reducer, {
     add: false,
     upload: false,
-    submit: false,
+    statusAddStudent: false,
+    statusUpload: false,
+    file: null,
     error: null,
   });
 
-  const handleAddStudent = () => {
+  const handleFormAddStudent = () => {
     dispatch({ type: "ADD" });
   };
-  const handleUploadStudent = () => {
+  const handleFormUploadStudent = () => {
     dispatch({ type: "UPLOAD" });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({ type: "SUBMIT" });
+  const handleAddStudent = (formData) => {
+    dispatch({ type: "STATUS ADD STUDENT" });
+    console.log(formData);
     setTimeout(() => {
-      dispatch({ type: "SUBMIT" });
+      dispatch({ type: "STATUS ADD STUDENT" });
+    }, 2000);
+  };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    dispatch({ type: "SET FILE", payload: file });
+  };
+  const handleUpload = () => {
+    dispatch({ type: "STATUS UPLOAD" });
+    console.log(state.file);
+    setTimeout(() => {
+      dispatch({ type: "STATUS UPLOAD" });
     }, 2000);
   };
 
   return (
     <Container className="mt-5" data-bs-theme="dark">
-      {state.submit ? (
+      {state.statusAddStudent ? (
         <Container className="position-absolute">
           <Alert
             variant="success"
             className="text-center position-absolute top-20 end-0"
           >
-            Success Submit!
+            Student Added
+          </Alert>
+        </Container>
+      ) : (
+        ""
+      )}
+      {state.statusUpload ? (
+        <Container className="position-absolute">
+          <Alert
+            variant="success"
+            className="text-center position-absolute top-20 end-0"
+          >
+            File has been uploaded
           </Alert>
         </Container>
       ) : (
@@ -81,7 +121,7 @@ export default function Students() {
           <div className="mb-3 d-flex gap-2">
             <Button
               variant={state.add ? "light" : "outline-light"}
-              onClick={handleAddStudent}
+              onClick={handleFormAddStudent}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +137,7 @@ export default function Students() {
             </Button>
             <Button
               variant={state.upload ? "primary" : "outline-primary"}
-              onClick={handleUploadStudent}
+              onClick={handleFormUploadStudent}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,24 +159,25 @@ export default function Students() {
         </Col>
       </Row>
       {state.add ? (
-        <Form className="mb-5 w-50 m-auto border p-4">
+        <Form action={handleAddStudent} className="mb-5 w-50 m-auto border p-4">
           <h4 className="fw-bold">Add Student</h4>
           <Form.Group>
             <Form.Label>Student ID</Form.Label>
-            <Form.Control type="text" placeholder="Enter Student ID" />
+            <Form.Control
+              type="text"
+              name="studentId"
+              placeholder="Enter Student ID"
+            />
           </Form.Group>
           <Form.Group className="mt-3">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Student Name" />
+            <Form.Control
+              type="text"
+              name="studentName"
+              placeholder="Enter Student Name"
+            />
           </Form.Group>
-          <Button
-            variant="success"
-            type="submit"
-            className="mt-3 w-100"
-            onClick={() => {
-              handleSubmit;
-            }}
-          >
+          <Button variant="success" type="submit" className="mt-3 w-100">
             Add Student
           </Button>
         </Form>
@@ -148,13 +189,18 @@ export default function Students() {
           <h4 className="fw-bold">Upload Students File</h4>
           <p className="text-warning">File Format must be .csv</p>
           <Form.Group>
-            <Form.Control type="file" accept=".csv" />
+            <Form.Control
+              type="file"
+              name="file"
+              accept=".csv"
+              onChange={handleFileChange}
+            />
           </Form.Group>
           <Button
             variant="success"
             type="submit"
             className="mt-3 w-100"
-            onClick={handleSubmit}
+            onClick={handleUpload}
           >
             Upload Files
           </Button>
