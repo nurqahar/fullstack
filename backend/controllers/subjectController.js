@@ -1,15 +1,15 @@
-import mapelSchema from "../schemas/mapelSchema.js";
-import mapelModel from "../models/mapelModel.js";
+import { subjectSchema } from "../schemas/subjectSchema.js";
+import subjectModel from "../models/subjectModel.js";
 
-export const createMapel = async (req, res) => {
-  const { error, value } = mapelSchema.validate(req.body);
+export const createSubject = async (req, res) => {
+  const { error, value } = subjectSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
 
   const idKelas = parseInt(req.params.idKelas, 10);
   try {
-    const newData = await mapelModel.createData({ idKelas, ...value });
+    const newData = await subjectModel.createData({ idKelas, ...value });
     return res.status(201).json({ msg: "success", ...newData });
   } catch (err) {
     const { detail } = err;
@@ -17,32 +17,32 @@ export const createMapel = async (req, res) => {
   }
 };
 
-export const getAllMapel = async (req, res) => {
-  const data = await mapelModel.getAllData();
+export const getAllSubject = async (req, res) => {
+  const data = await subjectModel.getAllData();
   return res.json(data);
 };
 
-export const getMapelById = async (req, res) => {
-  const data = await mapelModel.getDataById(parseInt(req.params.id, 10));
+export const getSubjectById = async (req, res) => {
+  const data = await subjectModel.getDataById(parseInt(req.params.id, 10));
   if (data) {
     return res.json(data);
   }
   return res.status(404).json({ msg: "Data not found" });
 };
 
-export const updateMapel = async (req, res) => {
-  const { error, value } = mapelSchema.validate(req.body);
+export const updateSubject = async (req, res) => {
+  const { error, value } = subjectSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
 
   const idKelas = parseInt(req.params.idKelas, 10);
   const dataId = parseInt(req.params.id, 10);
-  const data = await mapelModel.getDataById(dataId);
+  const data = await subjectModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "Data not found" });
 
   try {
-    const updatedData = await mapelModel.updateData(dataId, {
+    const updatedData = await subjectModel.updateData(dataId, {
       idKelas,
       ...value,
     });
@@ -53,11 +53,11 @@ export const updateMapel = async (req, res) => {
   }
 };
 
-export const deleteMapel = async (req, res) => {
+export const deleteSubject = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
-  const data = await mapelModel.getDataById(dataId);
+  const data = await subjectModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "Data not found" });
 
-  await mapelModel.deleteData(dataId);
+  await subjectModel.deleteData(dataId);
   return res.status(204).send();
 };

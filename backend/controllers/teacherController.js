@@ -1,12 +1,12 @@
-import guruSchema from "../schemas/guruSchema.js";
-import guruModel from "../models/guruModel.js";
+import { teacherSchema } from "../schemas/teacherSchema.js";
+import teacherModel from "../models/teacherModel.js";
 
-export const createGuru = async (req, res) => {
-  const { error, value } = guruSchema.validate(req.body);
+export const createTeacher = async (req, res) => {
+  const { error, value } = teacherSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   try {
-    const newData = await guruModel.createData(value);
+    const newData = await teacherModel.createData(value);
     return res.status(201).json({ msg: "success", ...newData });
   } catch (err) {
     const { detail } = err;
@@ -14,12 +14,12 @@ export const createGuru = async (req, res) => {
   }
 };
 
-export const importDataGuru = async (req, res) => {
-  const { error, value } = guruSchema.validate(req.body);
+export const importDataTeacher = async (req, res) => {
+  const { error, value } = teacherSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   try {
-    const newData = await guruModel.createData(value);
+    const newData = await teacherModel.createData(value);
     return res.status(201).json({ msg: "success", ...newData });
   } catch (err) {
     const { detail } = err;
@@ -27,9 +27,9 @@ export const importDataGuru = async (req, res) => {
   }
 };
 
-export const getAllGuru = async (req, res) => {
+export const getAllTeacher = async (req, res) => {
   try {
-    const allData = await guruModel.getAllData();
+    const allData = await teacherModel.getAllData();
     return res.status(200).json(allData);
   } catch (err) {
     const { detail } = err;
@@ -37,10 +37,10 @@ export const getAllGuru = async (req, res) => {
   }
 };
 
-export const getGuruById = async (req, res) => {
+export const getTeacherById = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
   try {
-    const data = await guruModel.getDataById(dataId);
+    const data = await teacherModel.getDataById(dataId);
     return res.status(200).json(data);
   } catch (err) {
     const { detail } = err;
@@ -48,15 +48,15 @@ export const getGuruById = async (req, res) => {
   }
 };
 
-export const updateGuru = async (req, res) => {
-  const { error, value } = guruSchema.validate(req.body);
+export const updateTeacher = async (req, res) => {
+  const { error, value } = teacherSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   const dataId = parseInt(req.params.id, 10);
-  const data = await guruModel.getDataById(dataId);
+  const data = await teacherModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "data not found!" });
   try {
-    const updatedData = await guruModel.updateData(dataId, value);
+    const updatedData = await teacherModel.updateData(dataId, value);
     return res.status(200).json({ msg: "updated", ...updatedData });
   } catch (err) {
     const { detail } = err;
@@ -64,12 +64,12 @@ export const updateGuru = async (req, res) => {
   }
 };
 
-export const deleteGuru = async (req, res) => {
+export const deleteTeacher = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
-  const data = await guruModel.getDataById(dataId);
+  const data = await teacherModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "data not found!" });
   try {
-    await guruModel.deleteData(dataId);
+    await teacherModel.deleteData(dataId);
     return res.status(204).send();
   } catch (err) {
     const { detail } = err;

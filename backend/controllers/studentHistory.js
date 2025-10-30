@@ -1,15 +1,15 @@
-import riwayatSiswaSchema from "../schemas/riwayatSiswaSchema.js";
-import riwayatSiswaModel from "../models/riwayatSiswaModel.js";
+import { studentHistorySchema } from "../schemas/studentHistorySchema.js";
+import studentHistoryModel from "../models/studentHistory.js";
 
-export const createRiwayatSiswa = async (req, res) => {
-  const { error, value } = riwayatSiswaSchema.validate(req.body);
+export const createStudentHistory = async (req, res) => {
+  const { error, value } = studentHistorySchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   const idSiswa = parseInt(req.params.idSiswa, 10);
   const idKelas = parseInt(req.params.idKelas, 10);
   const idWaliKelas = parseInt(req.params.idWaliKelas, 10);
   try {
-    const newData = await riwayatSiswaModel.createData({
+    const newData = await studentHistoryModel.createData({
       idSiswa,
       idKelas,
       idWaliKelas,
@@ -22,9 +22,9 @@ export const createRiwayatSiswa = async (req, res) => {
   }
 };
 
-export const getAllRiwayatSiswa = async (req, res) => {
+export const getAllStudentHistory = async (req, res) => {
   try {
-    const allData = await riwayatSiswaModel.getAllData();
+    const allData = await studentHistoryModel.getAllData();
     return res.status(200).json(allData);
   } catch (err) {
     const { detail } = err;
@@ -32,10 +32,10 @@ export const getAllRiwayatSiswa = async (req, res) => {
   }
 };
 
-export const getRiwayatSiswaById = async (req, res) => {
+export const getStudentHistoryById = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
   try {
-    const data = await riwayatSiswaModel.getDataById(dataId);
+    const data = await studentHistoryModel.getDataById(dataId);
     return res.status(200).json(data);
   } catch (err) {
     const { detail } = err;
@@ -43,18 +43,18 @@ export const getRiwayatSiswaById = async (req, res) => {
   }
 };
 
-export const updateRiwayatSiswa = async (req, res) => {
-  const { error, value } = riwayatSiswaSchema.validate(req.body);
+export const updateStudentHistory = async (req, res) => {
+  const { error, value } = studentHistorySchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   const dataId = parseInt(req.params.id, 10);
   const idSiswa = parseInt(req.params.idSiswa, 10);
   const idKelas = parseInt(req.params.idKelas, 10);
   const idWaliKelas = parseInt(req.params.idWaliKelas, 10);
-  const data = await riwayatSiswaModel.getDataById(dataId);
+  const data = await studentHistoryModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "data not found!" });
   try {
-    const updatedData = await riwayatSiswaModel.updateData(dataId, {
+    const updatedData = await studentHistoryModel.updateData(dataId, {
       idSiswa,
       idKelas,
       idWaliKelas,
@@ -67,12 +67,12 @@ export const updateRiwayatSiswa = async (req, res) => {
   }
 };
 
-export const deleteRiwayatSiswa = async (req, res) => {
+export const deleteStudentHistory = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
-  const data = await riwayatSiswaModel.getDataById(dataId);
+  const data = await studentHistoryModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "data not found!" });
   try {
-    await riwayatSiswaModel.deleteData(dataId);
+    await studentHistoryModel.deleteData(dataId);
     return res.status(204).send();
   } catch (err) {
     const { detail } = err;
@@ -80,10 +80,10 @@ export const deleteRiwayatSiswa = async (req, res) => {
   }
 };
 
-export const getRiwayatSiswaByJoin = async (req, res) => {
+export const getStudentHistoryByJoin = async (req, res) => {
   const dataId = parseInt(req.params.id, 10);
   try {
-    const data = await riwayatSiswaModel.getDataByJoin(dataId);
+    const data = await studentHistoryModel.getDataByJoin(dataId);
     return res.status(200).json(data);
   } catch (err) {
     const { detail } = err;
