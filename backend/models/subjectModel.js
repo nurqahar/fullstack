@@ -1,7 +1,7 @@
 import db from "../database/knex.js";
 
-const tableName = "catatan_mengajar";
-export default class CatatanMengajar {
+const tableName = "subject";
+export default class SubjectModel {
   static async createData(data) {
     const [{ id }] = await db(tableName).insert(data).returning("id");
     return { id, ...data };

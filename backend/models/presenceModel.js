@@ -1,7 +1,7 @@
 import db from "../database/knex.js";
 
-const tableName = "siswa";
-export default class Siswa {
+const tableName = "presence";
+export default class PresenceModel {
   static async createData(data) {
     const [{ id }] = await db(tableName).insert(data).returning("id");
     return { id, ...data };

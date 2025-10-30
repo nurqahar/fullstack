@@ -45,9 +45,15 @@ function Login() {
                 <Form.Control type="password" placeholder="Enter Password" />
               </Form.Group>
               <Button variant="light" type="submit" className="w-100">
-                Submit
+                Sign In
               </Button>
             </Form>
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col className="d-flex justify-content-between">
+            <a href="/forgotPassword">Forgot Password?</a>
+            <a href="/register">Register</a>
           </Col>
         </Row>
       </Container>

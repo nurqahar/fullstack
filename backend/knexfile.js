@@ -5,12 +5,17 @@ import "dotenv/config";
  */
 export default {
   development: {
-    client: "postgresql",
+    client: "mysql",
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      host: process.env.HOST,
+      port: process.env.PORT,
+      database: process.env.DATABASE_NAME,
+      user: process.env.USER,
+      password: process.env.PASSWORD,
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations/development",
     },
   },
 
@@ -20,10 +25,6 @@ export default {
       database: "my_db",
       user: "username",
       password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
     },
     migrations: {
       tableName: "knex_migrations",
@@ -37,10 +38,6 @@ export default {
       database: "my_db",
       user: "username",
       password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
     },
     migrations: {
       tableName: "knex_migrations",
