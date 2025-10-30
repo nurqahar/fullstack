@@ -63,7 +63,6 @@ exports.up = async function (knex) {
       .references("id")
       .inTable("studentsHistories");
     table.string("presences", "100");
-    table.string("information", "255");
   });
 
   await knex.schema.createTable("users", (table) => {
