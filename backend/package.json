@@ -8,6 +8,7 @@
   "main": "app.js",
   "scripts": {
     "server": "nodemon app.js",
+    "make": "npx knex migrate:make",
     "list-migrate": "npx knex migrate:list",
     "migrate": "npx knex migrate:latest",
     "rollback": "npx knex migrate:rollback"
