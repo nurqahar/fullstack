@@ -1,17 +1,17 @@
 import express from "express";
 import {
-  createMapel,
-  getAllMapel,
-  getMapelById,
-  updateMapel,
-  deleteMapel,
-} from "../controllers/mapelController.js";
+  createSubject,
+  getAllSubject,
+  getSubjectById,
+  updateSubject,
+  deleteSubject,
+} from "../controllers/subjectController.js";
 
 const router = express.Router();
-router.post("/:idKelas", createMapel);
-router.get("/", getAllMapel);
-router.get("/:id", getMapelById);
-router.put("/:id", updateMapel);
-router.delete("/:id", deleteMapel);
+router.post("/:idClass", createSubject);
+router.get("/", getAllSubject);
+router.get("/:id", getSubjectById);
+router.put("/:id", updateSubject);
+router.delete("/:id", deleteSubject);
 
 export default router;

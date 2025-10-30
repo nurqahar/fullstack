@@ -5,14 +5,14 @@ export const createStudentHistory = async (req, res) => {
   const { error, value } = studentHistorySchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
-  const idSiswa = parseInt(req.params.idSiswa, 10);
-  const idKelas = parseInt(req.params.idKelas, 10);
-  const idWaliKelas = parseInt(req.params.idWaliKelas, 10);
+  const idStudent = parseInt(req.params.idStudent, 10);
+  const idClass = parseInt(req.params.idClass, 10);
+  const idTeacher = parseInt(req.params.idTeacher, 10);
   try {
     const newData = await studentHistoryModel.createData({
-      idSiswa,
-      idKelas,
-      idWaliKelas,
+      idStudent,
+      idClass,
+      idTeacher,
       ...value,
     });
     return res.status(201).json({ msg: "success", ...newData });
@@ -48,16 +48,16 @@ export const updateStudentHistory = async (req, res) => {
   if (error) return res.status(400).json({ error: error.details[0].message });
 
   const dataId = parseInt(req.params.id, 10);
-  const idSiswa = parseInt(req.params.idSiswa, 10);
-  const idKelas = parseInt(req.params.idKelas, 10);
-  const idWaliKelas = parseInt(req.params.idWaliKelas, 10);
+  const idStudent = parseInt(req.params.idStudent, 10);
+  const idClass = parseInt(req.params.idClass, 10);
+  const idTeacher = parseInt(req.params.idTeacher, 10);
   const data = await studentHistoryModel.getDataById(dataId);
   if (!data) return res.status(404).json({ error: "data not found!" });
   try {
     const updatedData = await studentHistoryModel.updateData(dataId, {
-      idSiswa,
-      idKelas,
-      idWaliKelas,
+      idStudent,
+      idClass,
+      idTeacher,
       ...value,
     });
     return res.status(200).json({ msg: "updated", ...updatedData });

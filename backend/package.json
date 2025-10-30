@@ -9,7 +9,7 @@
   "scripts": {
     "server": "nodemon app.js",
     "list-migrate": "npx knex migrate:list",
-    "migrate": "npx knex migrate",
+    "migrate": "npx knex migrate:latest",
     "rollback": "npx knex migrate:rollback"
   },
   "dependencies": {

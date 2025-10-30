@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createPresensi,
-  getAllPresensi,
-  getPresensiById,
-  updatePresensi,
-  deletePresensi,
-} from "../controllers/presensiController.js";
+  createPresence,
+  getAllPresence,
+  getPresenceById,
+  updatePresence,
+  deletePresence,
+} from "../controllers/presenceController.js";
 
 const router = express.Router();
 
-router.post("/:idCatatanMengajar/:idRiwayatSiswa", createPresensi);
-router.get("/", getAllPresensi);
-router.get("/:id", getPresensiById);
-router.put("/:id", updatePresensi);
-router.delete("/:id", deletePresensi);
+router.post("/:idTeachingNote/:idStudentHistory", createPresence);
+router.get("/", getAllPresence);
+router.get("/:id", getPresenceById);
+router.put("/:id", updatePresence);
+router.delete("/:id", deletePresence);
 
 export default router;

@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createKelas,
-  getAllKelas,
-  getKelasById,
-  updateKelas,
-  deleteKelas,
-} from "../controllers/kelasController.js";
+  createClass,
+  getAllClass,
+  getClassById,
+  updateClass,
+  deleteClass,
+} from "../controllers/classController.js";
 
 const router = express.Router();
 
-router.post("/", createKelas);
-router.get("/", getAllKelas);
-router.get("/:id", getKelasById);
-router.put("/:id", updateKelas);
-router.delete("/:id", deleteKelas);
+router.post("/", createClass);
+router.get("/", getAllClass);
+router.get("/:id", getClassById);
+router.put("/:id", updateClass);
+router.delete("/:id", deleteClass);
 
 export default router;

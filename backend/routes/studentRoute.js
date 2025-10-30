@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createSiswa,
-  getAllSiswa,
-  getSiswaById,
-  updateSiswa,
-  deleteSiswa,
-} from "../controllers/siswaController.js";
+  createStudent,
+  getAllStudent,
+  getStudentById,
+  updateStudent,
+  deleteStudent,
+} from "../controllers/studentController.js";
 
 const router = express.Router();
 
-router.post("/", createSiswa);
-router.get("/", getAllSiswa);
-router.get("/:id", getSiswaById);
-router.put("/:id", updateSiswa);
-router.delete("/:id", deleteSiswa);
+router.post("/", createStudent);
+router.get("/", getAllStudent);
+router.get("/:id", getStudentById);
+router.put("/:id", updateStudent);
+router.delete("/:id", deleteStudent);
 
 export default router;
