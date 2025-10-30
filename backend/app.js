@@ -9,10 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", routes);
 
-app.listen(
-  port,
-  () => {
-    console.log(`API url: http://localhost:${port}/api/`);
-  },
-  backlog,
-);
+app.listen(port, () => {
+  console.log(`API url: http://localhost:${port}/api/`);
+});
