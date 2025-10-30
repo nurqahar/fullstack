@@ -9,9 +9,9 @@ export default {
     connection: {
       host: process.env.HOST,
       port: process.env.PORT,
-      database: process.env.DATABASE_NAME,
       user: process.env.USER,
       password: process.env.PASSWORD,
+      database: process.env.DATABASE_NAME,
     },
     migrations: {
       tableName: "knex_migrations",
@@ -22,9 +22,11 @@ export default {
   staging: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      host: process.env.HOST,
+      port: process.env.PORT,
+      user: process.env.USER,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE_NAME,
     },
     migrations: {
       tableName: "knex_migrations",
@@ -35,9 +37,7 @@ export default {
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      connectionString: process.env.DATABASE_URL,
     },
     migrations: {
       tableName: "knex_migrations",
