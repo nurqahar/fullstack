@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createCatatanMengajar,
-  getAllCatatanMengajar,
-  getCatatanMengajarById,
-  updateCatatanMengajar,
-  deleteCatatanMengajar,
-} from "../controllers/catatanMengajarController.js";
+  createTeachingNote,
+  getAllTeachingNote,
+  getTeachingNoteById,
+  updateTeachingNote,
+  deleteTeachingNote,
+} from "../controllers/teachingNoteController.js";
 
 const router = express.Router();
 
-router.post("/:idMapel/:idGuru", createCatatanMengajar);
-router.get("/", getAllCatatanMengajar);
-router.get("/:id", getCatatanMengajarById);
-router.put("/:id", updateCatatanMengajar);
-router.delete("/:id", deleteCatatanMengajar);
+router.post("/:idSubject/:idTeacher", createTeachingNote);
+router.get("/", getAllTeachingNote);
+router.get("/:id", getTeachingNoteById);
+router.put("/:id", updateTeachingNote);
+router.delete("/:id", deleteTeachingNote);
 
 export default router;

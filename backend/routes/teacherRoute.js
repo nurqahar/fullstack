@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createGuru,
-  getAllGuru,
-  getGuruById,
-  updateGuru,
-  deleteGuru,
-} from "../controllers/guruController.js";
+  createTeacher,
+  getAllTeacher,
+  getTeacherById,
+  updateTeacher,
+  deleteTeacher,
+} from "../controllers/teacherController.js";
 
 const router = express.Router();
 
-router.post("/", createGuru);
-router.get("/", getAllGuru);
-router.get("/:id", getGuruById);
-router.put("/:id", updateGuru);
-router.delete("/:id", deleteGuru);
+router.post("/", createTeacher);
+router.get("/", getAllTeacher);
+router.get("/:id", getTeacherById);
+router.put("/:id", updateTeacher);
+router.delete("/:id", deleteTeacher);
 
 export default router;

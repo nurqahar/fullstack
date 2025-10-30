@@ -1,4 +1,4 @@
-import teachingNoteSchema from "../schemas/teachingNoteSchema.js";
+import { teachingNoteSchema } from "../schemas/teachingNoteSchema.js";
 import teachingNoteModel from "../models/teachingNoteModel.js";
 
 export const createTeachingNote = async (req, res) => {

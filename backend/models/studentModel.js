@@ -1,4 +1,4 @@
-import db from "../database/knex.js";
+import db from "../migrations/knex.js";
 
 const tableName = "student";
 export default class StudentModel {
