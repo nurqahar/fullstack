@@ -15,7 +15,9 @@ export const resetPasswordSchema = Joi.object({
 
 export const validateResetPasswordSchema = Joi.object({
   tokenJwt: Joi.string().pattern(tokenJwtPattern),
-  confirmPassword: passwordPattern
+  confirmPassword: Joi.string()
+    .pattern(passwordPattern)
+    .required()
     .equal(Joi.ref("password"))
     .messages({ "any,only": "{{#label}} does not match" }),
 });

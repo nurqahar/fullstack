@@ -13,7 +13,7 @@ export default class UserModel {
     return { ...data, id };
   }
   static getAllUser() {
-    return db(tableName()).select("*");
+    return db(tableName).select("*");
   }
 
   static getUserById(id) {

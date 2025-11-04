@@ -1,17 +1,17 @@
 import UserModel from "../models/userModel.js";
-import { userSchema } from "../schemas/userSchema.js";
+import userSchema from "../schemas/userSchema.js";
 
-export const createUser = async (request, response) => {
+export const createUser = async (req, res) => {
   const { error, value } = userSchema.validate(request.body);
   if (error) {
     return response.status(400).json({ error: error.details[0].message });
   }
   try {
     const newUser = await UserModel.createUser(value);
-    return response.status(201).json(newUser);
+    return res.status(201).json(newUser);
   } catch (err) {
     const { detail } = err;
-    return response.status(422).json({ error: detail });
+    return res.status(422).json({ error: detail });
   }
 };
 
