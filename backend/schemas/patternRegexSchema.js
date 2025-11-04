@@ -8,3 +8,5 @@ export const usernamePattern = /^[A-Za-z]+$/;
 export const patternSex = /^(L|P)$/;
 export const passwordPattern =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+export const tokenJwtPattern =
+  /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+\=]*$/;
