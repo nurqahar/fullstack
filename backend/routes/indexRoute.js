@@ -6,6 +6,8 @@ import classRoute from "./classRoute.js";
 import presenceRoute from "./presenceRoute.js";
 import studentHistoryRoute from "./studentHistoryRoute.js";
 import studentRoute from "./studentRoute.js";
+import userRoute from "../routes/userRoute.js";
+import authRoute from "../routes/authRoute.js";
 
 const router = express.Router();
 
@@ -16,5 +18,7 @@ router.use("/class", classRoute);
 router.use("/presence", presenceRoute);
 router.use("/studentHistory", studentHistoryRoute);
 router.use("/student", studentRoute);
+router.use("/users", userRoute);
+router.use("/auth", authRoute);
 
 export default router;
