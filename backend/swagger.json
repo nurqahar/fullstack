@@ -31,9 +31,7 @@
   "paths": {
     "/api/users": {
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Lists all the users",
         "description": "Lists all the users",
         "responses": {
@@ -47,17 +45,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "Authorization": []
-          }
-        ]
+        }
       },
       "post": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Create new user.",
         "description": "Create new user.",
         "requestBody": {
@@ -97,9 +88,7 @@
     },
     "/api/users/{id}": {
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Get user by user name.",
         "description": "Get user detail based on username.",
         "operationId": "getUserById",
@@ -149,9 +138,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Update user resource.",
         "description": "This can only be done by the logged in user.",
         "operationId": "updateUser",
@@ -204,9 +191,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Delete user resource.",
         "description": "This can only be done by the logged in user.",
         "operationId": "deleteUser",
@@ -251,9 +236,7 @@
     },
     "/api/auth/login": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Login using email and password",
         "description": "Login into system",
         "requestBody": {
@@ -282,9 +265,7 @@
     },
     "/api/auth/reset": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Reset password using email",
         "description": "Reset password link will send through email",
         "requestBody": {
@@ -313,9 +294,7 @@
     },
     "/api/auth/validate-reset": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Validate Reset Password using email",
         "description": "Validate reset password",
         "requestBody": {
@@ -350,27 +329,31 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int",
-            "example": 1
+            "format": "int"
           },
           "email": {
-            "type": "string",
-            "example": "john@email.com"
+            "type": "string"
           },
           "username": {
-            "type": "string",
-            "example": "theUser"
+            "type": "string"
           },
           "password": {
-            "type": "string",
-            "example": "12345678@!"
+            "type": "string"
           }
+        },
+        "example": {
+          "email": "john@email.com",
+          "username": "theUser",
+          "password": "Password20@"
         }
       },
       "UserArray": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Users"
+          "example": {
+            "email": "john@email.com",
+            "username": "theUser"
+          }
         }
       },
       "ResetPassword": {
@@ -391,11 +374,11 @@
           },
           "password": {
             "type": "string",
-            "example": "password!!1"
+            "example": "Password!!1"
           },
           "confirmPassword": {
             "type": "string",
-            "example": "password!!1"
+            "example": "Password!!1"
           }
         }
       },
@@ -409,10 +392,7 @@
         }
       },
       "Error": {
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code", "message"],
         "type": "object",
         "properties": {
           "code": {
@@ -453,3 +433,4 @@
     }
   }
 }
+

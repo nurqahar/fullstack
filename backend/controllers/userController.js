@@ -4,7 +4,7 @@ import userSchema from "../schemas/userSchema.js";
 export const createUser = async (req, res) => {
   const { error, value } = userSchema.validate(req.body);
   if (error) {
-    return response.status(400).json({ error: error.details[0].message });
+    return res.status(400).json({ error: error.details[0].message });
   }
   try {
     const newUser = await UserModel.createUser(value);

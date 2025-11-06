@@ -6,11 +6,13 @@ const saltRound = 10;
 export default class UserModel {
   static async createUser({ password, ...otherData }) {
     const hashedPassword = await bcrypt.hash(password, saltRound);
-    const [{ id }] = await db(tableName).insert(
-      { password: hashedPassword, ...data },
-      "id",
-    );
-    return { ...data, id };
+    const [{ id }] = await db(tableName)
+      .insert({
+        password: hashedPassword,
+        ...otherData,
+      })
+      .returning("id");
+    return { ...otherData, id };
   }
   static getAllUser() {
     return db(tableName).select("*");
