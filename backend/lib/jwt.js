@@ -4,11 +4,11 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 export function generateJWT({
-  userData,
+  emailPasswordUser,
   expiresIn = "1d",
   algorithm = "HS256",
 }) {
-  const { id } = userData;
+  const { id } = emailPasswordUser;
   const payload = {
     sub: id,
     iat: Date.now(),

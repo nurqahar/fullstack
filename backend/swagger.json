@@ -243,7 +243,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/login"
               }
             }
           },
@@ -353,6 +353,19 @@
           "example": {
             "email": "john@email.com",
             "username": "theUser"
+          }
+        }
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "theUser"
+          },
+          "password": {
+            "type": "string",
+            "example": "Password20@"
           }
         }
       },

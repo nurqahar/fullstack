@@ -22,8 +22,8 @@ export const login = async (req, res) => {
   }
 
   try {
-    const user = await UserModel.getEmailByPassword(value);
-    const auth = generateJWT({ user });
+    const emailPasswordUser = await UserModel.getEmailByPassword(value);
+    const auth = generateJWT({ emailPasswordUser });
 
     return res.status(200).json(auth);
   } catch (err) {

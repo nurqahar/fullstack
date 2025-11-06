@@ -37,19 +37,25 @@ export default class UserModel {
     await db(tableName).where({ id }).del();
   }
 
-  static async getEmailByPassword({ email, password }) {
-    const user = await db(tableName).where({ email }).first();
+  static async getEmailByPassword({ username, password }) {
+    const emailPasswordUser = await db(tableName)
+      .select("id", "email", "password")
+      .where({ username })
+      .first();
 
-    if (!user) {
+    if (!emailPasswordUser) {
       throw new Error("User email not found");
     }
 
     if (password) {
-      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+      const isPasswordCorrect = await bcrypt.compare(
+        password,
+        emailPasswordUser.password,
+      );
       if (!isPasswordCorrect) {
         throw new Error("Incorrect password");
       }
     }
-    return user;
+    return emailPasswordUser;
   }
 }

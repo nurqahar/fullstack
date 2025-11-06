@@ -1,6 +1,7 @@
 import UserModel from "../models/userModel.js";
 import userSchema from "../schemas/userSchema.js";
 
+const DECIMAL = 10;
 export const createUser = async (req, res) => {
   const { error, value } = userSchema.validate(req.body);
   if (error) {

@@ -2,10 +2,11 @@ import Joi from "joi";
 import {
   passwordPattern,
   tokenJwtPattern,
+  usernamePattern,
 } from "../schemas/patternRegexSchema.js";
 
 export const loginSchema = Joi.object({
-  email: Joi.string().email().required(),
+  username: Joi.string().pattern(usernamePattern).min(3).required(),
   password: Joi.string().pattern(passwordPattern).required(),
 });
 
