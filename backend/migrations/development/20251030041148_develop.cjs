@@ -50,7 +50,7 @@ exports.up = async function (knex) {
     table.integer("id_teacher").unsigned().references("id").inTable("teachers");
   });
 
-  await knex.schema.createTable("presences", (table) => {
+  await knex.schema.createTable("attendance", (table) => {
     table.increments("id");
     table
       .integer("id_teachingNotes")
@@ -62,7 +62,7 @@ exports.up = async function (knex) {
       .unsigned()
       .references("id")
       .inTable("studentsHistories");
-    table.string("presences", "100");
+    table.string("attendance", "100");
   });
 
   await knex.schema.createTable("users", (table) => {
@@ -79,7 +79,7 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-  await knex.schema.dropTable("presences");
+  await knex.schema.dropTable("attendance");
   await knex.schema.dropTable("teachingNotes");
   await knex.schema.dropTable("subjects");
   await knex.schema.dropTable("studentsHistories");
